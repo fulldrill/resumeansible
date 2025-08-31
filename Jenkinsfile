@@ -15,10 +15,10 @@ pipeline {
         }
 
         stage('Run Ansible Playbook') {
-            steps {
-                bat 'ansible-playbook playbook.yml'
+           steps {
+                bat '''
+               wsl ansible-playbook /mnt/c/Users/PHRENCH/.jenkins/workspace/resumeansible/playbook.yml
+             '''
             }
         }
-        }
-
-    }
+}
