@@ -1,0 +1,10 @@
+- name: Deploy Resumeans App
+  hosts: localhost
+  tasks:
+    - name: Run Docker container
+      docker_container:
+        name: resumeans-app
+        image: resumeans-app:latest
+        state: started
+        ports:
+          - "8082:80"
