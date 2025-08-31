@@ -15,11 +15,16 @@ pipeline {
         }
 
         stage('Run Ansible Playbook') {
-           steps {
+            steps {
                 bat '''
-               wsl ansible-playbook /mnt/c/Users/PHRENCH/.jenkins/workspace/resumeansible/playbook.yml
-             '''
+                docker run --rm ^
+                    -v %cd%:/workspace ^
+                    -v //./pipe/docker_engine://./pipe/docker_engine ^
+                    -w /workspace ^
+                    cytopia/ansible:latest ^
+                    sh -c "pip3 install requests docker && ansible-playbook -i inventory.ini playbook.yml"
+                '''
             }
         }
-}
+    }
 }
