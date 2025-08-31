@@ -1,3 +1,3 @@
 FROM nginx:alpine
-COPY resume.html /usr/share/nginx/html/resumeans.html
+COPY resumeans.html /usr/share/nginx/html/resumeans.html
 
